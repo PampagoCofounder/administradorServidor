@@ -1,12 +1,12 @@
-Header set Access-Control-Allow-Origin "http://localhost:5173"
-Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
-Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+# Base del proyecto
+#RewriteBase /administratorpampago/servidor/
+# Redirigir TODO a index.php
 
 RewriteEngine On
 
-# Base del proyecto
-RewriteBase /administratorpampago/servidor/
-# Redirigir TODO a index.php
+# permitir acceso directo
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
+
+# redirigir a index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
