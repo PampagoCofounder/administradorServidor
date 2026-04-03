@@ -29,7 +29,7 @@ $payload = [
     "iat" => time(),
     "exp" => time() + 3600,
     "data" => [
-        "id" => $user["id"],
+        "id" => $user["id_administrador"],
         "user" => $user["adminUser"],
         
     ]
@@ -40,7 +40,7 @@ $jwt = JWT::encode($payload, $key, "HS256");
 echo json_encode([
     "token" => $jwt,
     "adminUser" => [
-        "id" => $user["id"],
+        "id" => $user["id_administrador"],
         "adminUser" => $user["adminUser"]
     ]
 ]);
