@@ -1,12 +1,12 @@
-# Base del proyecto
-#RewriteBase /administratorpampago/servidor/
-# Redirigir TODO a index.php
-
 RewriteEngine On
+
+# 🔐 PASAR Authorization header (CLAVE para JWT)
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 # permitir acceso directo
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # redirigir a index.php
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^ index.php [QSA,L]
