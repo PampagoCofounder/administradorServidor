@@ -1,6 +1,6 @@
 <?php
 
-// Permitir origen específico (RECOMENDADO)
+// Permitir origen específico 
 
 
 //header("Access-Control-Allow-Origin:  http://localhost:5173/");

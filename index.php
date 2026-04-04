@@ -38,6 +38,10 @@ switch ($route) {
     case 'ingresos':
         require_once __DIR__ . "/routes/ingreso.php";
         break;
+    
+    case 'usuarios':
+        require_once __DIR__ . "/routes/usuarios.php";
+        break;
 
 
     default:
