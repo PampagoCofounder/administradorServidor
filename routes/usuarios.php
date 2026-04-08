@@ -27,22 +27,27 @@ switch ($method) {
     case "POST":
         $data = json_decode(file_get_contents("php://input"), true);
 
-        $id = $data['id'] ?? null;
         $name_users = $data['name_users'] ?? null;
         $pass_users = $data['pass_users'] ?? null;
 
-        if (!$id || !$name_users || !$pass_users) {
+    
+
+        if ( !$name_users || !$pass_users) {
             echo json_encode(["ok" => false, "error" => "Datos incompletos"]);
             exit;
         }
 
-        $stmt = $db->prepare("INSERT INTO usuarios (id, name_users, pass_users) VALUES (?, ?, ?)");
-        $stmt->execute([$id, $name_users, $pass_users]);
+        $plainPassword = bin2hex(random_bytes(4));
+
+        $hashedPassword = password_hash($pass_users, PASSWORD_DEFAULT);
+
+        $stmt = $db->prepare("INSERT INTO usuarios (name_users, pass_users) VALUES (?, ?)");
+        $stmt->execute([ $name_users, $hashedPassword]);
 
         echo json_encode([
             "ok" => true,
             "usuario" => [
-                "id" => $db->lastInsertId(),
+        
                 "name_users" => $name_users,
                 "pass_users" => $pass_users
             ]

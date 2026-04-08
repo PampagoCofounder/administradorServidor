@@ -1,7 +1,7 @@
 <?php
 
-header("Access-Control-Allow-Origin: https://administrador.pampago.site");
-//header("Access-Control-Allow-Origin: http://localhost:5173");
+//header("Access-Control-Allow-Origin: https://administrador.pampago.site");
+header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Credentials: true");
@@ -41,6 +41,10 @@ switch ($route) {
     
     case 'usuarios':
         require_once __DIR__ . "/routes/usuarios.php";
+        break;
+    
+    case 'campanias':
+        require_once __DIR__ . "/routes/campanias.php";
         break;
 
 
