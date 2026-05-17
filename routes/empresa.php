@@ -11,13 +11,13 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     // 📦 OBTENER EMPRESAS
     case "GET":
-        $id_empresa = $_GET['id_empresa'] ?? null;
+        $id = $_GET['id'] ?? null;
 
-        if ($id_empresa) {
-            $stmt = $db->prepare("SELECT * FROM empresa WHERE id_empresa = ?");
-            $stmt->execute([$id_empresa]);
+        if ($id) {
+            $stmt = $db->prepare("SELECT * FROM datos_empresa WHERE id = ?");
+            $stmt->execute([$id]);
         } else {
-            $stmt = $db->prepare("SELECT * FROM empresa");
+            $stmt = $db->prepare("SELECT * FROM datos_empresa");
             $stmt->execute();
         }
 

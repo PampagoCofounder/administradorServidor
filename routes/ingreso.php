@@ -11,10 +11,10 @@ switch ($method) {
         $id_empresa = $_GET['id_empresa'] ?? null;
 
         if ($id_empresa) {
-            $stmt = $db->prepare("SELECT * FROM ingresos WHERE id_empresa = ?");
+            $stmt = $db->prepare("SELECT * FROM ingresos_pampago WHERE id_empresa = ?");
             $stmt->execute([$id_empresa]);
         } else {
-            $stmt = $db->prepare("SELECT * FROM ingresos");
+            $stmt = $db->prepare("SELECT * FROM ingresos_pampago");
             $stmt->execute();
         }
 
@@ -36,7 +36,7 @@ switch ($method) {
             exit;
         }
 
-        $stmt = $db->prepare("INSERT INTO ingresos (id_empresa, concepto, monto) VALUES (?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO ingresos_pampago (id_empresa, concepto, monto) VALUES (?, ?, ?)");
         $stmt->execute([$id_empresa, $concepto, $monto]);
 
         echo json_encode([

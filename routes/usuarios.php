@@ -11,10 +11,10 @@ switch ($method) {
         $id = $_GET['id'] ?? null;
 
         if ($id) {
-            $stmt = $db->prepare("SELECT * FROM usuarios WHERE id = ?");
+            $stmt = $db->prepare("SELECT * FROM usuarios_pampamind WHERE id = ?");
             $stmt->execute([$id]);
         } else {
-            $stmt = $db->prepare("SELECT * FROM usuarios");
+            $stmt = $db->prepare("SELECT * FROM usuarios_pampamind");
             $stmt->execute();
         }
 
